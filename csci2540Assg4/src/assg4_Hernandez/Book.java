@@ -74,9 +74,9 @@ public class Book {
 	 */
 	@Override
 	public String toString () {
-		return " " + this.id + " " + this.title + " "
+		return this.id + " " + this.title + " "
 				+ this.isbn + " " + this.author + " " 
-				+ this.category + "\n";
+				+ this.category;
 	}
 	
 	/**
@@ -85,14 +85,22 @@ public class Book {
 	 * @param arraySize
 	 * @param id
 	 */
+	@SuppressWarnings("unused")
 	public static void bookSearch (Book[] array, int arraySize, int id) {
-		for (int i = 0; i < arraySize; i++) {
-			if (array[i].id==id) {
-				System.out.print(array[i].toString());
-				return;
+		try {
+		
+			for (int i = 0; i < arraySize; i++) {
+				if (array[i].id==id) {
+					System.out.print(array[i].toString());
+					return;
+				}
+				throw new BookNotFoundException("Book is not found");
 			}
+			System.out.println ("put exception here");
+		} catch (BookNotFoundException e) {
+			System.out.println ("BookNotFoundException\n -" + e.getMessage());
+			return;
 		}
-		System.out.println("put exception here");
 		return;
 	}
 	
