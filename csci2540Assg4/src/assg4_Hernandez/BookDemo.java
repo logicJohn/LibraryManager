@@ -1,14 +1,20 @@
+/**
+ * @author Johnnie Hernandez
+ * @version Assignment 4
+ */
 package assg4_Hernandez;
 
 import java.io.*;
 import java.util.Scanner;
 
-
+/**
+ * Creates a catalog of books from a given file.  Records the book
+ * id, title, author, isbn, and category of each book.  Then allows the 
+ * user to search the category for books by their book id.  
+ * 
+ */
 public class BookDemo {
 
-	
-	
-	
 	public static void main (String[] args) {
 		String file1 = "catalog.txt";
 		Book[] x;
@@ -18,7 +24,12 @@ public class BookDemo {
 		
 	}
 	
-	
+	/**
+	 * Reads the fileName and copies each of the books descriptions.
+	 * into an array of Books.
+	 * @param fileName is the file name holding the list of books.
+	 * @return The catalog of all records in fileName.
+	 */
 	public static Book[] copyFile (String fileName) {
 		int lines = countLines(fileName);
 		Book[] x = new Book[lines];
@@ -26,6 +37,11 @@ public class BookDemo {
 		return x;
 	}
 	
+	/**
+	 * Count the number of records in the category file.
+	 * @param fileName is the file holding the list of books.
+	 * @return the number of records in fileName.
+	 */
 	public static int countLines (String fileName) {
 		int lineCount = 0;
 		try { 
@@ -45,6 +61,12 @@ public class BookDemo {
 		return lineCount;
 	}
 	
+	/**
+	 * Read the records from fileName and store them in an array of Books
+	 * @param fileName is the file name holding the list of books.
+	 * @param size is the number of records in the books catalog.
+	 * @return The catalog of all records in fileName.
+	 */
 	public static Book[] readFile (String fileName, int size) {
 		Book[] x = new Book[size];
 		try { 
@@ -70,21 +92,32 @@ public class BookDemo {
 		return x;
 	}
 	
-	public static void printCatalog (Book[] x) {
-		for (int i = 0; i < x.length; i++) {
-			System.out.println(x[i].toString());
+	/**
+	 * Prints all the records of books to console.
+	 * @param books is the catalog of books.
+	 */
+	public static void printCatalog (Book[] books) {
+		for (int i = 0; i < books.length; i++) {
+			System.out.println(books[i].toString());
 		}
 		
-		for (int i = 0; i < x.length; i++) {
-			System.out.println(x[i].getId());
-			System.out.println(x[i].getTitle());
-			System.out.println(x[i].getIsbn());
-			System.out.println(x[i].getAuthor());
-			System.out.println(x[i].getCategory());
+		for (int i = 0; i < books.length; i++) {
+			System.out.println(books[i].getId());
+			System.out.println(books[i].getTitle());
+			System.out.println(books[i].getIsbn());
+			System.out.println(books[i].getAuthor());
+			System.out.println(books[i].getCategory());
 		}
+		
+		System.out.println("\n\n\n");
 	}
 	
-	public static void searchCatalog (Book[] x) {
+	/**
+	 * Search the books for an id matching a user input.
+	 * Then print the book and its information to the console.
+	 * @param books is the catalog of books.
+	 */
+	public static void searchCatalog (Book[] books) {
 		int input = -1;
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Begin search (enter 0 to exit)");
@@ -97,7 +130,7 @@ public class BookDemo {
 				return;
 			}
 			try {
-				Book.bookSearch(x, x.length, input);
+				Book.bookSearch(books, books.length, input);
 			} catch (BookNotFoundException e) {
 				System.err.println("BookNotFoundException " + e.getMessage());
 			}

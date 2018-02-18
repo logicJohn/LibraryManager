@@ -1,16 +1,30 @@
+/**
+ * @author Johnnie Hernandez
+ * @version Assignment 4
+ */
 package assg4_Hernandez;
 
 
-
+/**
+ * Book is an object to represent a book in a catalog consisting of
+ * <b>book id, book title, book isbn, book author, and book category</b>.
+ * The <b>id</b> will be the book id, a positive number 5 integers long. The book
+ * <b>title</b> will be as a string of a max of 30 characters.  <b>isbn</b> will be a 10 
+ * digit long string. <b>Author</b> will be the name of the author stored at a max of 10
+ * characters. The <b>category</b> will be a char F or N representing fiction or non-fiction.
+ *
+ */
 public class Book {
 
 	private int id; // 5-digits
 	private String title; // 30 char max
 	private String isbn; // 10 digits 
 	private String author; // 10 char max
-	private char category; // F fiction N non-fiction
+	private char category; // F fiction, N non-fiction
 	
-	
+	/**
+	 * Constructs a book with default values
+	 */
 	public Book () {
 		this.id = 10000;
 		this.title = "default";
@@ -19,7 +33,14 @@ public class Book {
 		this.category = 'F';
 	}
 	
-	
+	/**
+	 * Constructs a book after vetting inputed id, title, isbn, author, and category.
+	 * @param id is the book id as a 5 digit number.
+	 * @param title is the book title with 30 max characters.
+	 * @param isbn is the book isbn 10 digits.
+	 * @param author is the book authors name with 10 max characters.
+	 * @param category is the book category as F or N, for fiction and non-fiction.
+	 */
 	public Book (int id, String title, String isbn, String author, char category) {
 		if (id > 10000 && id < 99999) {
 			this.id = id;
@@ -74,8 +95,12 @@ public class Book {
 	 * and 'N' for non fiction
 	 * @return Book category in the form of char
 	 */
-	public char getCategory () {
-		return this.category;
+	public String getCategory () {
+		if (this.category == 'F') {
+			return "Fiction";
+		} else {
+			return "Non-Fiction";
+		}
 	}
 	
 	/**
@@ -87,7 +112,7 @@ public class Book {
 	public String toString () {
 		return this.id + " " + this.title + " "
 				+ this.isbn + " " + this.author + " " 
-				+ this.category;
+				+ this.getCategory();
 	}
 	
 	/**
@@ -105,7 +130,7 @@ public class Book {
 				return;
 			}
 		}
-		throw new BookNotFoundException(id);
+		throw new BookNotFoundException(Integer.toString(id));
 	}
 
 }

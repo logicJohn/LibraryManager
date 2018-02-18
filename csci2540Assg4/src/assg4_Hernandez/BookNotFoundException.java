@@ -1,11 +1,19 @@
+/**
+ * @author Johnnie Hernandez
+ * @version Assignment 4
+ */
 package assg4_Hernandez;
 
+/**
+ * Is an exception for handling book search method in the Book class.  
+ */
 @SuppressWarnings("serial")
 public class BookNotFoundException extends Exception {
 	
-
-	public BookNotFoundException (int id) {
-		super ("Book ID " + id + " could not be found.");
+	public BookNotFoundException () {}
+	
+	public BookNotFoundException (String id) {
+		super ("Book ID " + id + " not found.");
 	}
 	
 }
