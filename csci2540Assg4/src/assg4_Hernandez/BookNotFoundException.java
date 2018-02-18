@@ -1,11 +1,11 @@
 package assg4_Hernandez;
 
+@SuppressWarnings("serial")
 public class BookNotFoundException extends Exception {
 	
-	public BookNotFoundException () {};
-	
-	public BookNotFoundException (String message) {
-		super (message);
+
+	public BookNotFoundException (int id) {
+		super ("Book ID " + id + " could not be found.");
 	}
 	
 }

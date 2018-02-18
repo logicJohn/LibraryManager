@@ -8,8 +8,6 @@ public class Book {
 	private String author; // 10 char max
 	private char category; // F fiction N non-fiction
 	
-	private int catalogLength;
-	
 	
 	public Book () {
 		this.id = 10000;
@@ -81,27 +79,21 @@ public class Book {
 	
 	/**
 	 * 
-	 * @param array
+	 * @param arr
 	 * @param arraySize
 	 * @param id
+	 * @throws BookNotFoundException 
 	 */
-	@SuppressWarnings("unused")
-	public static void bookSearch (Book[] array, int arraySize, int id) {
-		try {
-		
-			for (int i = 0; i < arraySize; i++) {
-				if (array[i].id==id) {
-					System.out.print(array[i].toString());
-					return;
-				}
-				throw new BookNotFoundException("Book is not found");
+	public static void bookSearch (Book[] arr, int arraySize, int id) throws BookNotFoundException {
+		for (int i = 0; i < arraySize; i++) {
+			if (arr[i].id == id) {
+				System.out.println(arr[i].toString());
+				return;
 			}
-			System.out.println ("put exception here");
-		} catch (BookNotFoundException e) {
-			System.out.println ("BookNotFoundException\n -" + e.getMessage());
-			return;
 		}
-		return;
+		throw new BookNotFoundException(id);
 	}
+	
+
 	
 }

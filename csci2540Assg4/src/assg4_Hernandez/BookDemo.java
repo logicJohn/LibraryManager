@@ -1,6 +1,7 @@
 package assg4_Hernandez;
 
 import java.io.*;
+import java.util.Scanner;
 
 
 public class BookDemo {
@@ -8,11 +9,12 @@ public class BookDemo {
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		String file1 = "catalog.txt";
 		Book[] x;
 		x = copyFile(file1);
 		printCatalog(x);
+		searchCatalog(x);
 		
 	}
 	
@@ -72,5 +74,36 @@ public class BookDemo {
 		for (int i = 0; i < x.length; i++) {
 			System.out.println(x[i].toString());
 		}
+		
+		for (int i = 0; i < x.length; i++) {
+			System.out.println(x[i].getId());
+			System.out.println(x[i].getTitle());
+			System.out.println(x[i].getIsbn());
+			System.out.println(x[i].getAuthor());
+			System.out.println(x[i].getCategory());
+		}
 	}
+	
+	public static void searchCatalog (Book[] x) {
+		int input=-1;
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Begin search (enter 0 to exit)");
+		
+		while( input != 0) {
+			System.out.print("Enter book id:");
+			input = keyboard.nextInt();
+			if( input == 0) {
+				keyboard.close();
+				return;
+			}
+			try {
+				Book.bookSearch(x, x.length, input);
+			} catch (BookNotFoundException e) {
+				System.err.println("BookNotFoundException " + e.getMessage());
+			}
+		}
+		
+	}
+
+
 }
