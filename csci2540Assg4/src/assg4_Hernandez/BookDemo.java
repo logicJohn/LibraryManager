@@ -85,7 +85,7 @@ public class BookDemo {
 	}
 	
 	public static void searchCatalog (Book[] x) {
-		int input=-1;
+		int input = -1;
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("Begin search (enter 0 to exit)");
 		
@@ -102,6 +102,7 @@ public class BookDemo {
 				System.err.println("BookNotFoundException " + e.getMessage());
 			}
 		}
+		keyboard.close();
 		
 	}
 

@@ -1,5 +1,7 @@
 package assg4_Hernandez;
 
+
+
 public class Book {
 
 	private int id; // 5-digits
@@ -19,40 +21,49 @@ public class Book {
 	
 	
 	public Book (int id, String title, String isbn, String author, char category) {
-		this.id = id;
-		this.title = title;
-		this.isbn = isbn;
-		this.author = author;
-		this.category = category;
+		if (id > 10000 && id < 99999) {
+			this.id = id;
+		} else {
+			id = 10000;
+		}
+		this.title = title.substring(0, Math.min(title.length(),30));
+		this.isbn = isbn.substring(0, Math.min(isbn.length(),10));
+		this.author = author.substring(0, Math.min(author.length(),10));
+		if ( category == 'F' || category == 'N') {
+			this.category = category;
+		} else { 
+			this.category = 'F';
+		}
+		
 	}
 	
 	/**
 	 * Get the Id of book.
-	 * @return Book Id in integer form
+	 * @return Book Id.
 	 */
 	public int getId () {
 		return this.id;
 	}
 	
 	/**
-	 * Get the title of book
-	 * @return Book title as String
+	 * Get the title of book.
+	 * @return Book title.
 	 */
 	public String getTitle () {
 		return this.title;
 	}
 	
 	/**
-	 * Get the isbn of book
-	 * @return Book ISBN as String
+	 * Get the isbn of book.
+	 * @return Book ISBN. 
 	 */
 	public String getIsbn () {
 		return this.isbn;
 	}
 	
 	/**
-	 * Get the Author of the book
-	 * @return Book Author as String
+	 * Get the Author of the book.
+	 * @return Book Author.
 	 */
 	public String getAuthor () {
 		return this.author;
@@ -68,7 +79,9 @@ public class Book {
 	}
 	
 	/**
-	 * 
+	 * Get the book's id, title, isbn, author, and category as
+	 * a single string.
+	 * @return The books descriptions.
 	 */
 	@Override
 	public String toString () {
@@ -78,11 +91,12 @@ public class Book {
 	}
 	
 	/**
+	 * Search the contents of an array for a given book id.
 	 * 
-	 * @param arr
-	 * @param arraySize
-	 * @param id
-	 * @throws BookNotFoundException 
+	 * @param arr is a Catalog of books.
+	 * @param arraySize the size of arr.
+	 * @param id is the book id you are searching the catalog for.
+	 * @throws BookNotFoundException if book id does not exist in catalog.
 	 */
 	public static void bookSearch (Book[] arr, int arraySize, int id) throws BookNotFoundException {
 		for (int i = 0; i < arraySize; i++) {
@@ -93,7 +107,5 @@ public class Book {
 		}
 		throw new BookNotFoundException(id);
 	}
-	
 
-	
 }
