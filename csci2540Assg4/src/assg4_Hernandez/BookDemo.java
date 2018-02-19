@@ -47,9 +47,9 @@ public class BookDemo {
 		try { 
 			FileReader file = new FileReader(fileName);
 			BufferedReader buffer = new BufferedReader(file);
-			String line = null;
+
 			
-			while ((line = buffer.readLine()) != null) {
+			while ((buffer.readLine()) != null) {
 				lineCount++;
 			}
 			buffer.close();
