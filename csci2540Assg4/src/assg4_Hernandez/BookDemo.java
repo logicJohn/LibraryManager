@@ -20,7 +20,9 @@ public class BookDemo {
 		Book[] x;
 		x = copyFile(file1);
 		printCatalog(x);
+		testConstructor();
 		searchCatalog(x);
+		
 		
 	}
 	
@@ -102,13 +104,19 @@ public class BookDemo {
 		}
 		
 		for (int i = 0; i < books.length; i++) {
-			System.out.println(books[i].getId());
-			System.out.println(books[i].getTitle());
-			System.out.println(books[i].getIsbn());
-			System.out.println(books[i].getAuthor());
+			System.out.print(books[i].getId() + " ");
+			System.out.print(books[i].getTitle() + " ");
+			System.out.print(books[i].getIsbn() + " ");
+			System.out.print(books[i].getAuthor() + " ");
 			System.out.println(books[i].getCategory());
 		}
 		
+		System.out.println("\n");
+	}
+	
+	public static void testConstructor () {
+		Book x = new Book();
+		System.out.println(x.toString());
 		System.out.println("\n\n\n");
 	}
 	
