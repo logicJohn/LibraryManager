@@ -12,6 +12,10 @@ public class BookNotFoundException extends Exception {
 	
 	public BookNotFoundException () {}
 	
+	/**
+	 * Exception stating current book id.
+	 * @param id Given book id.
+	 */
 	public BookNotFoundException (String id) {
 		super ("Book ID " + id + " not found.");
 	}
