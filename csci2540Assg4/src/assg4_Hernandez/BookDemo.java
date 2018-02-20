@@ -138,7 +138,8 @@ public class BookDemo {
 				return;
 			}
 			try {
-				Book.bookSearch(books, books.length, input);
+				int temp = Book.bookSearch(books, books.length, input);
+				System.out.println(books[temp].toString());
 			} catch (BookNotFoundException e) {
 				System.err.println("BookNotFoundException " + e.getMessage());
 			}

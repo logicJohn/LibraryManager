@@ -123,11 +123,10 @@ public class Book {
 	 * @param id is the book id you are searching the catalog for.
 	 * @throws BookNotFoundException if book id does not exist in catalog.
 	 */
-	public static void bookSearch (Book[] arr, int arraySize, int id) throws BookNotFoundException {
+	public static int bookSearch (Book[] arr, int arraySize, int id) throws BookNotFoundException {
 		for (int i = 0; i < arraySize; i++) {
 			if (arr[i].id == id) {
-				System.out.println(arr[i].toString());
-				return;
+				return i;
 			}
 		}
 		throw new BookNotFoundException(Integer.toString(id));
